@@ -1,0 +1,88 @@
+/* FONTS */
+
+* {
+    font-family: 'Roboto', sans-serif !important;
+}
+
+/* BASE FONT SIZE */
+html {
+    font-size: 17px;
+}
+
+body {
+    background: #eee;
+}
+
+h1 {
+    font-size: 2rem;
+    line-height: 100%;
+    margin-bottom: 40px;
+}
+
+p {
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+p,
+ul {
+    margin-bottom: 25px;
+}
+
+p,
+li {
+    line-height: 150%;
+    letter-spacing: 0.1px;
+}
+
+ul {
+    list-style-position: inside;
+}
+
+li {
+    font-weight: 300;
+    margin-bottom: 15px;
+    list-style-type: disc;
+}
+
+p em {
+    font-style: italic;
+}
+
+.small {
+    font-size: 0.7rem;
+    letter-spacing: 0.2px;
+}
+
+a {
+    transition: all 0.3s;
+    color: red;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #b00;
+}
+
+section {
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 15px;
+}
+
+section:first-of-type {
+    padding-top: 50px;
+}
+
+
+/* LAYOUT */
+
+body {
+    min-height: 100vh;
+}
+
+footer {
+    margin-top: 50px;
+    border-top: 1px solid grey;
+    padding: 15px;
+}
