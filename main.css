@@ -54,6 +54,14 @@ p em {
     letter-spacing: 0.2px;
 }
 
+.caps {
+    text-transform: uppercase;
+}
+
+.small.caps {
+    line-height: 80%;
+}
+
 a {
     transition: all 0.3s;
     color: red;
