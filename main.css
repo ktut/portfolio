@@ -1,7 +1,7 @@
 /* FONTS */
 
 * {
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Lato', sans-serif !important;
 }
 
 /* BASE FONT SIZE */
@@ -17,6 +17,7 @@ h1 {
     font-size: 2rem;
     line-height: 100%;
     margin-bottom: 40px;
+    font-weight: 300;
 }
 
 p {
@@ -37,6 +38,7 @@ li {
 
 ul {
     list-style-position: inside;
+    padding-left: 1rem;
 }
 
 li {
