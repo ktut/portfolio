@@ -64,6 +64,10 @@ p em {
     line-height: 80%;
 }
 
+.comin-soon {
+    color: #999;
+}
+
 a {
     transition: all 0.3s;
     color: red;
