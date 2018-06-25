@@ -16,8 +16,18 @@ body {
 h1 {
     font-size: 2rem;
     line-height: 100%;
-    margin-bottom: 40px;
+    font-weight: 400;
+}
+
+h2 {
+    font-size: 1.5rem;
+    line-height: 130%;
     font-weight: 300;
+}
+
+h1,
+h2 {
+    margin-bottom: 30px;
 }
 
 p {
@@ -97,6 +107,6 @@ body {
 
 footer {
     margin-top: 50px;
-    border-top: 1px solid grey;
+    /* border-top: 1px solid grey; */
     padding: 15px;
 }
