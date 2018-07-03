@@ -9,36 +9,29 @@ $(document).on('click', 'a[href^="#"]', function (event) {
 
 
 // create slider
-// var priceRange = document.getElementById('range');
+var priceRange = document.getElementById('range');
 
-// noUiSlider.create(priceRange, {
-//     start: [ 20 ],
-//     step: 20,
-//     range: {
-//         'min': 20,
-//         'max': 120
-//     }
-// });
+noUiSlider.create(priceRange, {
+    start: [ 10 ],
+    step: 10,
+    range: {
+        'min': 0,
+        'max': 20
+    }
+});
 
 // When the slider value changes, update the span and div
-// priceRange.noUiSlider.on('update', function( values, handle ) {
-
-//     jQuery("div.section").hide();
-
-//     if (values[handle] == 20.00) {
-//         jQuery(".twofifty").fadeIn();
-//     } else if (values[handle] == 40.00) {
-//         jQuery(".fourhundred").fadeIn();
-//     } else if (values[handle] == 60.00) {
-//         jQuery(".sixhundred").fadeIn();
-//     } else if (values[handle] == 80.00) {
-//         jQuery(".eighthundred").fadeIn();
-//     } else if (values[handle] == 100.00) {
-//         jQuery(".onemil").fadeIn();
-//     } else if (values[handle] == 120.00) {
-//         jQuery(".skylimit").fadeIn();
-//     }
-// });
+priceRange.noUiSlider.on('update', function( values, handle ) {
+    if (values[handle] == 0.00) {
+        jQuery("body").addClass("no-ui");
+        jQuery("body").removeClass("extra-ui");
+    } else if (values[handle] == 10.00) {
+        jQuery("body").removeClass("no-ui");
+    } else if (values[handle] == 20.00) {
+        jQuery("body").addClass("extra-ui");
+        jQuery("body").removeClass("no-ui");
+    }
+});
 
 // on topper image click, scroll down to slider, move slider and sections appropriately (using callback function)
 // jQuery( ".real-topper > a" ).click(function() {
