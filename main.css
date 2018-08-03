@@ -35,6 +35,10 @@ p {
     font-weight: 300;
 }
 
+b {
+    font-weight: 700;
+}
+
 p,
 ul {
     margin-bottom: 25px;
