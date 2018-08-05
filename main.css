@@ -19,10 +19,6 @@ h1 {
     font-weight: 400;
 }
 
-h1:first-of-type {
-    margin-top: 15px;
-}
-
 h2 {
     font-size: 1.5rem;
     line-height: 130%;
@@ -86,13 +82,9 @@ p em {
     color: #999;
 }
 
-.contact p {
-    font-size: 0.9rem;
-}
-
 a {
     transition: all 0.3s;
-    color: #cc0000;
+    color: #c00;
     text-decoration: underline;
 }
 
@@ -129,35 +121,6 @@ section:first-of-type {
 
 body {
     min-height: 100vh;
-}
-
-.contact {
-    background: #eee;
-    position: fixed;
-    bottom: -1px;
-    width: 100%;
-    border-top: 1px solid #aaa;
-}
-
-.contact p {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 15px 15px 20px;
-    padding-bottom: constant(safe-area-inset-bottom);
-    padding-bottom: env(safe-area-inset-bottom);
-}
-
-.contact::before {
-    content: "";
-    width: 100%;
-    position: absolute;
-    top: -41px;
-    height: 40px;
-
-    background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(238,238,238,1) 100%);
-    background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(238,238,238,1) 100%);
-    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(238,238,238,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#eeeeee',GradientType=0 );
 }
 
 footer {
