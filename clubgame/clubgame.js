@@ -95,7 +95,7 @@ $(document).ready(function() {
             }
 
             // girls flock to bottle
-            if (Math.random() < .3 && bottle && $("#seat").children().length <= 10) {
+            if (Math.random() < .2 && bottle && $("#seat").children().length <= 10) {
                 
                 var xi = $("#seat").offset().left;
                 var yi = $("#seat").offset().top;
@@ -174,8 +174,10 @@ $(document).ready(function() {
         // buy bottles
         $(".buy-bottle").on( "click", function() {
             if (!bottle && money >= 500) {
-                $(".bottle").fadeIn();
-                bottle = true;
+                $(".bottle").fadeIn(1000);
+                setTimeout(function(){ 
+                    bottle = true 
+                }, 3000);
 
                 money-=500;
                 alcohol+=100;
