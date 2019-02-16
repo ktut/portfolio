@@ -1,9 +1,28 @@
-$(document).ready(function() {
+function touchHandler(event) {
+    var touch = event.changedTouches[0];
 
-    $(document).bind("dragstart", function(event, ui){
-    event.preventDefault(); 
-    //return false;//edited
-    });
+    var simulatedEvent = document.createEvent("MouseEvent");
+        simulatedEvent.initMouseEvent({
+        touchstart: "mousedown",
+        touchmove: "mousemove",
+        touchend: "mouseup"
+    }[event.type], true, true, window, 1,
+        touch.screenX, touch.screenY,
+        touch.clientX, touch.clientY, false,
+        false, false, false, 0, null);
+
+    touch.target.dispatchEvent(simulatedEvent);
+    event.preventDefault();
+}
+
+function init() {
+    document.addEventListener("touchstart", touchHandler, true);
+    document.addEventListener("touchmove", touchHandler, true);
+    document.addEventListener("touchend", touchHandler, true);
+    document.addEventListener("touchcancel", touchHandler, true);
+}
+
+$(document).ready(function() {
 
     $(".start-game").on( "click", function() {
         $("#title").removeClass("active");
@@ -16,6 +35,8 @@ $(document).ready(function() {
     });
 
     function playGame() {
+
+        init();
        
         setTimeout(function(){
             // Hide the address bar!
