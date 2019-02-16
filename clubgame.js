@@ -14,10 +14,11 @@ $(document).ready(function() {
 
     function playGame() {
        
+        // this may or may not work
         setTimeout(function(){
             // Hide the address bar!
             window.scrollTo(0, 1);
-        }, 0);
+        }, 200);
 
         // declare initial global variables
         let time = 0;
@@ -93,7 +94,7 @@ $(document).ready(function() {
         }, 1000); 
         
         
-        // people animation logic
+        // people random movement logic
         function makeNewPosition(){
             var h = $($(".room")).height() - 50;
             var w = $($(".room")).width() - 50;
@@ -113,16 +114,14 @@ $(document).ready(function() {
                 });
         };
 
-        
-
         //make people draggable
-
         $( ".person" ).draggable();
+
+        // make seat droppable
         $( "#seat" ).droppable({
             drop: function( event, ui ) {
             $( this )
-                .addClass( "selected" );
-                $("#seat").append(ui);
+                $("#seat").append($(ui.draggable));
             }
         });
 
