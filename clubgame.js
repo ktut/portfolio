@@ -24,23 +24,68 @@ $(document).ready(function() {
         let numGirls = 0;
         let numGuys = 0;
         let score = 0;
-        let money = 500;
+        let money = 1200;
         let alcohol = 0;
-
-
 
         //populate fields
         $(".money").text(money);
+        $(".score").text(score);
 
         //show stats in console
         showStats();
 
-        //global timer, do things over time
+        // things to do per second
         setInterval(function () {
             time++;
-            score+=1;
+            
+            // at table, girls = two points, guys = negative one point
+            score += 2 * $("#seat").children(".girl").length;
+            score -= $("#seat").children(".guy").length;
+
             $(".score").text(score);
-            // console.log("seconds elapsed:" + time);
+
+            // sometimes, if low alcohol, and people at table, they leave
+            if (Math.random() < .2 && alcohol < 30 && $("#seat").children().length) {
+                var xe = -1 * $("#seat").offset().left;
+                var ye = -1 * $("#seat").offset().top;
+
+                let booted = $("#seat .person:last-child");
+
+                booted.animate({
+                    top: ye,
+                    left: xe     
+                }, 550, function() {
+                    $(".room").append(booted);
+                });
+            }
+
+            // girls flock to bottle
+            if (Math.random() < .4 && bottle) {
+                
+                var xi = $("#seat").offset().left;
+                var yi = $("#seat").offset().top;
+
+                let bottleRat = $(".room .person.girl:first-child");
+
+                bottleRat.addClass("selected")
+                bottleRat.animate({
+                    top: yi,
+                    left: xi     
+                }, 750, function() {
+                    $("#seat").append(bottleRat);
+                });
+            }
+
+            //reduce alcohol every second, if people at table
+            if (bottle && alcohol > 0 && $("#seat").children().length) {
+                alcohol = alcohol - $("#seat").children().length;
+            } else if (bottle && alcohol < 1) {
+                bottle = false;
+                alcohol = 0;
+                $(".bottle").fadeOut();
+            }
+
+
 
             //spawn person
             // $('.room').append($('<div class="person">'));
@@ -60,7 +105,7 @@ $(document).ready(function() {
         function animateDiv(myElement){
             var newq = makeNewPosition();
             myElement.animate({ top: newq[0], left: newq[1] }, 
-                2500, 
+                2000, 
                 "easeInOutElastic", 
                 function(){
                     animateDiv(myElement);        
@@ -75,14 +120,12 @@ $(document).ready(function() {
 
                 var xi = $("#seat").offset().left;
                 var yi = $("#seat").offset().top;
-                console.log(xi);
-                console.log(yi);
 
                 $(this).click(function(){
                     $(this).addClass("selected")
                     $(this).animate({
-                        top: xi,
-                        left: yi     
+                        top: yi,
+                        left: xi     
                     }, 750, function() {
                         $("#seat").append($(this));
                         // $(this).unbind();
@@ -94,7 +137,7 @@ $(document).ready(function() {
 
         // buy bottles
         $(".buy-bottle").on( "click", function() {
-            if (!bottle) {
+            if (!bottle && money >= 500) {
                 $(".bottle").fadeIn();
                 bottle = true;
 
@@ -107,7 +150,14 @@ $(document).ready(function() {
 
         // extract money from dudes
         $(document).on("click","#seat .person.guy",function() {
-            console.log("dude clicked");
+            if (Math.random() < .2) {
+                console.log("money");
+                money += 40;
+
+                $(".money").text(money);
+            } else {
+                console.log("no money");
+            }
         });
 
         function showStats() {
