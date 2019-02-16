@@ -1,11 +1,14 @@
 $(document).ready(function() {
 
+    //start game
+
     setTimeout(function(){
 		// Hide the address bar!
 		window.scrollTo(0, 1);
 	}, 0);
 
     // declare initial global variables
+    let time = 0;
     let numBottles = 0;
     let numGirls = 0;
     let numGuys = 0;
@@ -14,30 +17,25 @@ $(document).ready(function() {
     let alcohol = 0;
 
 
-    //logic for people
 
-    $('.person').each(function(){
-        // if they're not already selected
-        if (!$(this).hasClass("selected")) {
-            animateDiv($(this));
+    //populate fields
+    $(".money").text(money);
 
-            var xi = $("#seat").offset().left;
-            var yi = $("#seat").offset().bottom;
-            console.log(xi);
-            console.log(yi);
+    //show stats in console
+    showStats();
 
-            $(this).click(function(){
-                $(this).addClass("selected")
-                $(this).animate({
-                    top: xi,
-                    left: yi     
-                }, 750, function() {
-                    $("#seat").append($(this));
-                });
-            });
-        }
-    });
+    //global timer, do things over time
+    setInterval(function () {
+        time++;
+        score+=5;
+        $(".score").text(score);
+        // console.log("seconds elapsed:" + time);
 
+        //spawn person
+        // $('.room').append($('<div class="person">'));
+    }, 1000); 
+    
+    
     // people animation logic
     function makeNewPosition(){
         var h = $($(".room")).height() - 50;
@@ -58,30 +56,29 @@ $(document).ready(function() {
             });
     };
 
-    //populate fields
-    $(".money").text(money);
+    //people logic
+    $('.room .person').each(function(){
+        // if they're not already selected
+        if (!$(this).hasClass("selected")) {
+            animateDiv($(this));
 
-    //show stats in console
-    showStats();
+            var xi = $("#seat").offset().left;
+            var yi = $("#seat").offset().top;
+            console.log(xi);
+            console.log(yi);
 
-    //global timer
-    // setInterval(function () {
-    //     console.log("timer")
-    // }, 1000); 
-    
-    
-    function showStats() {
-        console.log("bottles: " + numBottles);
-        console.log("numGirls:" + numGirls);
-        console.log("numGuys:" + numGuys);
-        console.log("score:" + score);
-        console.log("money:" + money);
-        console.log("alcohol level:" + alcohol);
-    };
-
-    function resetGame() {
-
-    };
+            $(this).click(function(){
+                $(this).addClass("selected")
+                $(this).animate({
+                    top: xi,
+                    left: yi     
+                }, 750, function() {
+                    $("#seat").append($(this));
+                    // $(this).unbind();
+                });
+            });
+        }
+    });
 
 
     // buy bottles
@@ -97,8 +94,19 @@ $(document).ready(function() {
         showStats();
     });
 
-    // $( ".fighter" ).each(function() {
-        
-    // });
+
+    function showStats() {
+        console.log("bottles: " + numBottles);
+        console.log("numGirls:" + numGirls);
+        console.log("numGuys:" + numGuys);
+        console.log("score:" + score);
+        console.log("money:" + money);
+        console.log("alcohol level:" + alcohol);
+    };
+
+    // function resetGame() {
+
+    // };
+
 
 });

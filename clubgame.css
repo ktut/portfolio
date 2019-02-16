@@ -6,8 +6,11 @@
     flex-direction: column;
     justify-content: center;
     background: #000;
+
     height: 100vh;
+    height: calc(100vh - 20px);
     max-height: 815px;
+    min-height: 600px;
     width: 100%;
     max-width: 400px;
     margin: 0 auto;
@@ -77,40 +80,43 @@ h2 {
 .room {
     z-index: 1;
 }
-
 .table {
     z-index: 0;
 }
 
-
 .room {
-    width: 100%;
+    position: relative;
+    width: 70%;
     height: 50%;
+    margin: 0 auto;
+    padding-top: 50px;
 }
 
 .table {
     /* transform: perspective(500px) rotateX(45deg); */
-
     position: absolute;
-    bottom: 10px;
-    right: -15px;
-    width: 240px;
-    height: 200px;
+    bottom: 0;
+    right: 0;
+    width: 250px;
+    height: 250px;
     background: brown;
 }
 
 .bottle {
     display: none;
-    bottom: 50%;
-    right: 50%;
-    height: 30px;
-    width: 10px;
+    top: 5%;
+    left: 50%;
+    height: 75px;
+    width: 15px;
     background: blue;
 }
 
 .person {
     width: 50px;
-    height: 50px;
+    height: 100px;
+    margin-top: -50px;
+    margin-left: -25px;
+    z-index: 2;
     /* -webkit-transition: all 3.5s ease-in-out;
     -moz-transition: all 3.5s ease-in-out;
     -ms-transition: all 3.5s ease-in-out;
@@ -118,7 +124,7 @@ h2 {
     transition: all 3.5s ease-in-out;   */
 }
 
-.person.girl {
+.person {
     background: pink;
 }
 
@@ -127,5 +133,15 @@ h2 {
 }
 
 #seat {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     border: 5px solid red;
+    bottom: 0;
+    width: 100%;
+}
+
+#seat > .person {
+    /* transform: perspective(500px) rotateX(20deg); */
 }
