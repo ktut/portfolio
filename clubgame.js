@@ -112,27 +112,41 @@ $(document).ready(function() {
                 });
         };
 
-        //people logic
-        $('.room .person').each(function(){
-            // if they're not already selected
-            if (!$(this).hasClass("selected")) {
-                animateDiv($(this));
+        
 
-                var xi = $("#seat").offset().left;
-                var yi = $("#seat").offset().top;
+        //make people draggable
 
-                $(this).click(function(){
-                    $(this).addClass("selected")
-                    $(this).animate({
-                        top: yi,
-                        left: xi     
-                    }, 750, function() {
-                        $("#seat").append($(this));
-                        // $(this).unbind();
-                    });
-                });
+        $( ".person" ).draggable();
+        $( "#seat" ).droppable({
+            drop: function( event, ui ) {
+            $( this )
+                .addClass( "selected" );
+                $("#seat").append(ui);
             }
         });
+
+        // $('.room .person').each(function(){
+        //     // if they're not already selected
+        //     if (!$(this).hasClass("selected")) {
+        //         // animateDiv($(this));
+
+        //         // var xi = $("#seat").offset().left;
+        //         // var yi = $("#seat").offset().top;
+
+        //         // $(this).click(function(){
+        //         //     $(this).addClass("selected")
+        //         //     $(this).animate({
+        //         //         top: yi,
+        //         //         left: xi     
+        //         //     }, 750, function() {
+        //         //         $("#seat").append($(this));
+        //         //         // $(this).unbind();
+        //         //     });
+        //         // });
+
+        //         $(this).draggable();
+        //     }
+        // });
 
 
         // buy bottles

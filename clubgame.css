@@ -6,8 +6,8 @@ h2 {
 }
 
 h1 {
-    font-size: 2rem;
-    line-height: 100%;
+    font-size: 4rem;
+    line-height: 85%;
     margin-bottom: 15px;
 }
 
@@ -161,7 +161,8 @@ button {
     position: absolute;
     background-size: cover;
     background-position: center;
-    background-image: url(./assets/table.png);
+    /* background-image: url(./assets/table.png); */
+    background: brown;
     bottom: 0;
     right: 0;
     width: 250px;
@@ -190,6 +191,14 @@ button {
     z-index: 1;
 }
 
+.person {
+    background: pink;
+}
+
+.person.guy {
+    background: olive;
+}
+
 .person > img {
     transition: all 0.4s;
 }
@@ -199,6 +208,7 @@ button {
     display: flex;
     flex-wrap: wrap;
     transform: scale(1.2);
+    min-height: 150px;
     
     bottom: 0;
     width: 100%;
