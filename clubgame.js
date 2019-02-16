@@ -1,8 +1,15 @@
 $(document).ready(function() {
 
-    //start game
 
-    playGame();
+    $(".start-game").on( "click", function() {
+        $("#title").removeClass("active");
+        $("#club").addClass("active");
+        $("#info").addClass("active");
+
+        //start game
+        playGame();
+
+    });
 
     function playGame() {
        
