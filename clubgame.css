@@ -42,7 +42,8 @@ h2 {
     height: 100%;
 }
 
-#club > * {
+#club > *,
+#club > * > * {
     position: absolute;
 
     user-select: none;
@@ -54,15 +55,37 @@ h2 {
     font-family: 'Luckiest Guy', sans-serif !important;
 }
 
-#score {
-    padding: 10px;
+#info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
 }
 
-/* CLUB ITEM POSITIONING */
-
 .buy-bottle {
+    font-family: 'Luckiest Guy', sans-serif !important;
     bottom: 0;
     right: 0;
     background: red;
     padding: 15px;
+}
+
+/* CLUB ITEM POSITIONING */
+
+.table {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 200px;
+    height: 200px;
+    background: brown;
+}
+
+.bottle {
+    display: none;
+    bottom: 50%;
+    right: 50%;
+    height: 30px;
+    width: 10px;
+    background: blue;
 }
