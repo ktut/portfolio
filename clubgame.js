@@ -13,34 +13,33 @@ $(document).ready(function() {
     let money = 500;
     let alcohol = 0;
 
-    var x;
-    var y;
-
 
     //logic for people
 
     $('.person').each(function(){
+        // if they're not already selected
         if (!$(this).hasClass("selected")) {
             animateDiv($(this));
+
+            var xi = $("#seat").offset().left;
+            var yi = $("#seat").offset().top;
+            console.log(xi);
+            console.log(yi);
+
+            $(this).click(function(){
+                $(this).addClass("selected")
+                $(this).animate({
+                    top: xi,
+                    left: yi     
+                }, 750, function() {
+                    $("#seat").append($(this));
+                });
+            });
         }
-
-        var xi = $("#seat").offset().left;
-        var yi = $("#seat").offset().top;
-
-        $(this).click(function(){
-            $(this).addClass("selected")
-            $(this).animate({
-                top: xi,
-                left: yi     
-              }, 750, function() {
-                $("#seat").append($(this));
-              });
-        });
     });
 
+    // people animation logic
     function makeNewPosition(){
-    
-        // Get viewport dimensions (remove the dimension of the div)
         var h = $($(".room")).height() - 50;
         var w = $($(".room")).width() - 50;
         
@@ -48,15 +47,15 @@ $(document).ready(function() {
         var nw = Math.floor(Math.random() * w);
         
         return [nh,nw];    
-        
     }
-
     function animateDiv(myElement){
         var newq = makeNewPosition();
-        myElement.animate({ top: newq[0], left: newq[1] }, 2000,   function(){
-          animateDiv(myElement);        
-        });
-        
+        myElement.animate({ top: newq[0], left: newq[1] }, 
+            2500, 
+            "easeInOutElastic", 
+            function(){
+                animateDiv(myElement);        
+            });
     };
 
     //populate fields
