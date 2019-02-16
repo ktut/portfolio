@@ -11,6 +11,19 @@
     }
 }
 
+@media (max-width: 450px) {
+    .canvas-contain {
+        justify-content: flex-start;
+    }
+}
+
+#title,
+#club,
+#info {
+    transition: height 0.4s ease-in;
+}
+
+
 #game {
     display: flex;
     overflow: hidden;
@@ -98,11 +111,13 @@ h2 {
 .table {
     /* transform: perspective(500px) rotateX(45deg); */
     position: absolute;
+    background-size: cover;
+    background-position: center;
+    background-image: url(./assets/table.png);
     bottom: 0;
     right: 0;
     width: 250px;
     height: 250px;
-    background: brown;
 }
 
 .bottle {
