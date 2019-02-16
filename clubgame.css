@@ -149,7 +149,7 @@ button {
     z-index: 1;
 }
 .table {
-    z-index: 0;
+    z-index: 0 !important;
 }
 
 .room {
@@ -196,6 +196,15 @@ button {
     touch-action: none;
 }
 
+.room .person:not(.selected) {
+    border: 1px solid red;
+}
+
+.person.ui-draggable-dragging {
+    z-index: 5 !important;
+    transform: scale(1.1);
+}
+
 .person {
     background: pink;
 }
@@ -213,11 +222,18 @@ button {
     display: flex;
     flex-wrap: wrap;
     transform: scale(1.2);
-    min-height: 150px;
     
     bottom: 0;
     width: 100%;
     z-index: 3;
+}
+
+#points {
+    bottom: 20px;
+    width: 100%;
+    display: block;
+    color: white;
+    letter-spacing: 5px;
 }
 
 /* #seat > .person {
@@ -230,20 +246,22 @@ button {
 .wobble {
     animation: wobble 5s ease-in-out 2s infinite alternate both;
 }
+.pointsshift {
+    animation: pointsshift 0.6s ease-in infinite;
+}
 /* Animation steps */
 @keyframes wobble {
     0% { transform: perspective(500px) rotateX(0deg); }
     100% { transform: perspective(500px) rotateX(30deg); }
 }
 
-@keyframes color {
+@keyframes pointsshift {
     0% {
-      background-color: #222;
-    }
-    50% {
-      background-color: #8b0000;
+      opacity: 1;
+      top: 0;
     }
     100% {
-      background-color: #222;
+      opacity: 0;
+      top: -20px;
     }
   }
