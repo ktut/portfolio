@@ -2,6 +2,7 @@
 
 #game {
     display: flex;
+    overflow: hidden;
     flex-direction: column;
     justify-content: center;
     background: #000;
@@ -67,16 +68,23 @@ h2 {
     bottom: 0;
     right: 0;
     background: red;
-    padding: 15px;
+    padding: 15px 15px 5px;
 }
 
 /* CLUB ITEM POSITIONING */
 
+.room {
+    width: 100%;
+    height: 300px;
+}
+
 .table {
+    /* transform: perspective(500px) rotateX(45deg); */
+
     position: absolute;
     bottom: 10px;
-    right: 10px;
-    width: 200px;
+    right: -15px;
+    width: 240px;
     height: 200px;
     background: brown;
 }
@@ -88,4 +96,23 @@ h2 {
     height: 30px;
     width: 10px;
     background: blue;
+}
+
+.person,
+.seat {
+    width: 50px;
+    height: 50px;
+    /* -webkit-transition: all 3.5s ease-in-out;
+    -moz-transition: all 3.5s ease-in-out;
+    -ms-transition: all 3.5s ease-in-out;
+    -o-transition: all 3.5s ease-in-out;
+    transition: all 3.5s ease-in-out;   */
+}
+
+.person {
+    background: pink;
+}
+
+.seat {
+    border: 5px solid red;
 }
