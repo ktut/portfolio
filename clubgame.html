@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<!-- Looking at my source code? You're probably wondering why I'm not using React or some other framework. That's because I don't need one :) -->
+
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-26343135-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-26343135-2');
+    </script>
+
+    <title>Club Game — RKDVIS.COM</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+
+    <meta name="viewport" content="width=device-width, 
+    user-scalable=no, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+
+    <!-- Google Fonts -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
+
+    <!-- Reset CSS -->
+    <link rel="stylesheet" type="text/css" media="screen" href="./reset.css" />
+
+    <!-- Main CSS -->
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="./main.css" /> -->
+
+    <!-- Clubgame CSS -->
+    <link rel="stylesheet" type="text/css" media="screen" href="./clubgame.css" />
+
+  </head>
+  <body>
+
+    <div class="canvas-contain">
+
+    <!-- <canvas id="canvas" /> -->
+    <div id="game">
+        
+        <section id="club">
+            <button class="buy-bottle"><h1>Buy Bottle</h1></button>
+        </section>
+
+
+        <section id="score">
+            Score: <span class="score-count">0</span>
+        </section>
+
+    </div>
+
+    </div>
+    
+    <footer>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+
+    <!-- Main JS file -->
+    <script src="./clubgame.js"></script>
+
+    </footer>
+  </body>
+</html>

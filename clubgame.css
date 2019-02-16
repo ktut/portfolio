@@ -1,0 +1,68 @@
+/* CONTAIER POSITIONING */
+
+#game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #000;
+    height: 100vh;
+    max-height: 815px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+
+    font-family: 'Luckiest Guy', sans-serif !important;
+    color: #eee;
+}
+
+h1 {
+    font-size: 2rem;
+    line-height: 100%;
+}
+
+h2 {
+    font-size: 1.4rem;
+    line-height: 110%;
+}
+
+@supports (display: flex) {
+    .canvas-contain {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100vh;
+    }
+}
+
+/* SECTIONS BASIC POSITIONING */
+
+#club {
+    position: relative;
+
+    height: 100%;
+}
+
+#club > * {
+    position: absolute;
+
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+
+    font-family: 'Luckiest Guy', sans-serif !important;
+}
+
+#score {
+    padding: 10px;
+}
+
+/* CLUB ITEM POSITIONING */
+
+.buy-bottle {
+    bottom: 0;
+    right: 0;
+    background: red;
+    padding: 15px;
+}
