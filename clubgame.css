@@ -25,23 +25,6 @@ button {
 
 /* CONTAINER POSITIONING */
 
-@supports (display: flex) {
-    .canvas-contain {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        height: 100vh;
-
-        background: #333;
-    }
-}
-
-@media (max-width: 450px) {
-    .canvas-contain {
-        justify-content: flex-start;
-    }
-}
-
 #game {
     font-family: 'Luckiest Guy', sans-serif !important;
     display: flex;
@@ -60,6 +43,27 @@ button {
 
     
     color: #eee;
+}
+
+@supports (display: flex) {
+    .canvas-contain {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100vh;
+
+        background: #333;
+    }
+}
+
+@media (max-width: 450px) {
+    .canvas-contain {
+        display: block;
+        height: 90vh;
+    }
+    #game {
+        height: 90vh;
+    }
 }
 
 /* SECTIONS BASIC POSITIONING */
