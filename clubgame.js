@@ -94,6 +94,10 @@ $(document).ready(function() {
         showStats();
     });
 
+    // extract money from dudes
+    $(document).on("click","#seat .person.guy",function() {
+        console.log("dude clicked");
+    });
 
     function showStats() {
         console.log("bottles: " + numBottles);

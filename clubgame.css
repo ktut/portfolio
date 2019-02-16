@@ -1,4 +1,15 @@
-/* CONTAIER POSITIONING */
+/* CONTAINER POSITIONING */
+
+@supports (display: flex) {
+    .canvas-contain {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100vh;
+
+        background: #333;
+    }
+}
 
 #game {
     display: flex;
@@ -29,15 +40,6 @@ h2 {
     line-height: 110%;
 }
 
-@supports (display: flex) {
-    .canvas-contain {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        height: 100vh;
-    }
-}
-
 /* SECTIONS BASIC POSITIONING */
 
 #club {
@@ -60,6 +62,7 @@ h2 {
 }
 
 #info {
+    z-index: 1;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -86,7 +89,7 @@ h2 {
 
 .room {
     position: relative;
-    width: 70%;
+    width: 100%;
     height: 50%;
     margin: 0 auto;
     padding-top: 50px;
@@ -104,11 +107,14 @@ h2 {
 
 .bottle {
     display: none;
-    top: 5%;
-    left: 50%;
-    height: 75px;
-    width: 15px;
-    background: blue;
+    top: -15%;
+    left: 35%;
+    width: 80px;
+}
+
+.person > img,
+.bottle > img {
+    width: 100%;
 }
 
 .person {
@@ -124,20 +130,20 @@ h2 {
     transition: all 3.5s ease-in-out;   */
 }
 
-.person {
+/* .person {
     background: pink;
 }
 
 .person.boy {
     background: palegreen;
-}
+} */
 
 #seat {
     position: absolute;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    border: 5px solid red;
+    
     bottom: 0;
     width: 100%;
 }
