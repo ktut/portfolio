@@ -193,6 +193,7 @@ button {
     margin-top: -50px;
     margin-left: -25px;
     z-index: 1;
+    touch-action: none;
 }
 
 .person {
