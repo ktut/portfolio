@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+    $(document).bind("dragstart", function(event, ui){
+    event.preventDefault(); 
+    //return false;//edited
+    });
 
     $(".start-game").on( "click", function() {
         $("#title").removeClass("active");
