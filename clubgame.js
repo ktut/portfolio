@@ -35,6 +35,21 @@ $(document).ready(function() {
         $(".money").text(money);
         $(".score").text(score);
 
+        // place people randomly in room
+        $('.room .person').each(function(){
+            let newx = roomWidth * Math.random();
+            let newy = roomHeight * Math.random();
+  
+
+            $(this)
+            .css({
+                top: newy, 
+                left: newx
+            })
+            .css("z-index", parseInt(newy))
+            .css("animation-delay", Math.random() + "s");
+        });
+
         //show stats in console
         showStats();
 
@@ -75,7 +90,7 @@ $(document).ready(function() {
                     booted.css({
                         top: newy, 
                         left: newx
-                    });
+                    }).css("z-index", parseInt(newy));
                 });
             }
 
@@ -154,29 +169,6 @@ $(document).ready(function() {
                 $(ui.draggable).removeClass("selected");
             }
         });
-
-        // $('.room .person').each(function(){
-        //     // if they're not already selected
-        //     if (!$(this).hasClass("selected")) {
-        //         // animateDiv($(this));
-
-        //         // var xi = $("#seat").offset().left;
-        //         // var yi = $("#seat").offset().top;
-
-        //         // $(this).click(function(){
-        //         //     $(this).addClass("selected")
-        //         //     $(this).animate({
-        //         //         top: yi,
-        //         //         left: xi     
-        //         //     }, 750, function() {
-        //         //         $("#seat").append($(this));
-        //         //         // $(this).unbind();
-        //         //     });
-        //         // });
-
-        //         $(this).draggable();
-        //     }
-        // });
 
 
         // buy bottles

@@ -196,13 +196,19 @@ button {
     touch-action: none;
 }
 
+/* non-selected people should dance */
 .room .person:not(.selected) {
-    border: 1px solid red;
+    animation: dance .8s infinite alternate ease-in-out;
 }
 
+/* dragged people are brought up, and scale */
 .person.ui-draggable-dragging {
     z-index: 5 !important;
     transform: scale(1.1);
+}
+
+.person.pissed {
+    border: 1px solid red;
 }
 
 .person {
@@ -264,4 +270,12 @@ button {
       opacity: 0;
       top: -20px;
     }
+  }
+
+  @keyframes dance {
+    from, 49% { transform-origin: -50% 100%; }
+    50%, 75%, to { transform-origin: 150% 100%; }
+    25% { transform: rotate(-10deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(10deg); }
   }
