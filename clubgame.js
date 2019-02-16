@@ -22,7 +22,7 @@ $(document).ready(function() {
             animateDiv($(this));
 
             var xi = $("#seat").offset().left;
-            var yi = $("#seat").offset().top;
+            var yi = $("#seat").offset().bottom;
             console.log(xi);
             console.log(yi);
 
