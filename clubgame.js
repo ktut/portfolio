@@ -13,7 +13,7 @@ $(document).ready(function() {
 
         // declare initial global variables
         let time = 0;
-        let numBottles = 0;
+        let bottle = false;
         let numGirls = 0;
         let numGuys = 0;
         let score = 0;
@@ -31,7 +31,7 @@ $(document).ready(function() {
         //global timer, do things over time
         setInterval(function () {
             time++;
-            score+=5;
+            score+=1;
             $(".score").text(score);
             // console.log("seconds elapsed:" + time);
 
@@ -87,9 +87,9 @@ $(document).ready(function() {
 
         // buy bottles
         $(".buy-bottle").on( "click", function() {
-            if (!numBottles) {
+            if (!bottle) {
                 $(".bottle").fadeIn();
-                numBottles++;
+                bottle = true;
 
                 money-=500;
                 alcohol+=100;
@@ -104,7 +104,7 @@ $(document).ready(function() {
         });
 
         function showStats() {
-            console.log("bottles: " + numBottles);
+            console.log("bottleExists: " + bottle);
             console.log("numGirls:" + numGirls);
             console.log("numGuys:" + numGuys);
             console.log("score:" + score);
