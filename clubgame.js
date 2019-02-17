@@ -21,7 +21,6 @@ $(document).ready(function() {
 
         //start game
         playGame();
-
     });
 
     function playGame() {
@@ -33,7 +32,6 @@ $(document).ready(function() {
         }, 200);
 
         // declare initial global variables
-        let time = 0;
         let bottle = false;
         let numGirls = 0;
         let numGuys = 0;

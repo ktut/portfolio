@@ -29,7 +29,7 @@
     <script src="./clubgame.js"></script>
 
 
-    <title>Table Boys — RKDVIS.COM</title>
+    <title>Table Boyz — RKDVIS.COM</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
@@ -41,8 +41,7 @@
 
 
     <!-- Google Fonts -->
-    <!-- <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i" rel="stylesheet"> -->
-    <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
 
     <!-- Reset CSS -->
     <link rel="stylesheet" type="text/css" media="screen" href="./reset.css" />
@@ -58,13 +57,19 @@
     <div id="game">
 
         <section id="title" class="active">
-            <h1>Table<br>Boys</h1>
+            <h1>Table<br>Boyz</h1>
 
             
             <div class="char-select">
                 <h2>Select your character</h2>
-                <div class="adam sidetoside"><img src="./assets/adam.png"></div>
-                <div class="ryan wobble"><img src="./assets/ryan.png"></div>
+                <div class="adam">
+                    <img src="./assets/adam.png" class="sidetoside">
+                    <h3>Adam</h3>
+                </div>
+                <div class="ryan">
+                    <img src="./assets/ryan.png" class="wobble">
+                    <h3>Ryan</h3>
+                </div>
             </div>
             <button class="start-game" style="background: red;"><h2>START</h2></button>
         </section>
@@ -117,7 +122,7 @@
 
 
         <section id="info">
-            <div style="min-width: 100px;">
+            <div style="min-width: 50px;">
                 Score: <span class="score">0</span>
             </div>
             <div style="min-width: 50px;">
