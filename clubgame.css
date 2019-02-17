@@ -156,13 +156,8 @@ button {
     position: relative;
     width: 100%;
     margin: 25px auto 0;
-}
-
-@media (min-height: 568px) {
-    .room {
-        height: 40%;
-        min-height: 200px;
-    }
+    height: 40%;
+    min-height: 200px;
 }
 
 @media (min-height: 666px) {
