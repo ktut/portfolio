@@ -199,7 +199,19 @@ a {
     background: black;
 }
 
+.time {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-size: 1.8rem;
+    font-family: 'ZCOOL QingKe HuangYou', cursive !important;
+    padding-top: 10px;
+    z-index: 1000;
+}
 
+.time > span {
+    position: relative !important;
+}
 
 /* CLUB ITEM POSITIONING */
 
@@ -214,19 +226,19 @@ a {
 .room {
     position: relative;
     width: 100%;
-    margin: 25px auto 0;
-    min-height: 180px;
+    margin: 50px auto 0;
+    min-height: 80px;
 }
 
 @media (min-height: 666px) {
     .room {
-        min-height: 250px;
+        min-height: 150px;
     }
 }
 
 @media (min-height: 800px) {
     .room {
-        min-height: 300px;
+        min-height: 200px;
     }
 }
 
@@ -298,9 +310,9 @@ a {
 
 .bottle {
     display: none;
-    z-index: 2;
-    top: -15%;
-    left: 35%;
+    z-index: 100 !important;
+    top: 10%;
+    left: 30%;
     width: 80px;
 }
 
@@ -312,7 +324,7 @@ a {
 .person {
     width: 50px;
     height: 120px;
-    margin-top: -50px;
+    margin-top: -80px;
     margin-right: -15px;
     z-index: 1;
     touch-action: none;
@@ -353,11 +365,15 @@ a {
     position: absolute;
     display: flex;
     flex-wrap: wrap;
-    transform: scale(1.3);
+    transform: scale(1.15);
     
-    bottom: 0;
     width: 100%;
-    z-index: 3;
+    z-index: 500;
+    top: 30px;
+}
+
+#seat > .person {
+    z-index: 500;
 }
 
 #points {
@@ -365,7 +381,10 @@ a {
     width: 100%;
     display: block;
     color: white;
-    letter-spacing: 5px;
+    letter-spacing: 6px;
+    transform: translateY(-80px);
+    line-height: 3;
+    z-index: 1000 !important;
 }
 
 
@@ -379,6 +398,9 @@ a {
 .sidetoside {
     animation: sidetoside 1.4s ease-in-out 1s infinite alternate both;
 }
+.skew {
+    animation: skew 6s ease-in-out 1s infinite alternate both;
+}
 .pointsshift {
     animation: pointsshift 0.6s ease-in infinite;
 }
@@ -391,6 +413,11 @@ a {
 @keyframes sidetoside {
     0% { transform: rotateZ(-10deg); }
     100% { transform: rotateZ(10deg); }
+}
+
+@keyframes skew {
+    0% { transform:  skewX(-10deg); }
+    100% { transform:  skewX(10deg); }
 }
 
 @keyframes pointsshift {

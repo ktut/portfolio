@@ -7,6 +7,7 @@ $(document).ready(function() {
     $(".char-select > div").on( "click", function() {
         $(this).siblings("div").fadeOut();
         $(".start-game").fadeIn();
+        $(".char-select > h2").hide();
         if ( $( this ).hasClass( "adam" ) ) {
             character = "adam";
         } else {
@@ -34,6 +35,7 @@ $(document).ready(function() {
 
         // declare initial global variables
         let time = 0;
+        let speechBubbleText = "";
         let bottle = false;
         let numGirls = 0;
         let numGuys = 0;
@@ -70,7 +72,7 @@ $(document).ready(function() {
                 top: newy, 
                 left: newx
             })
-            .css("z-index", parseInt(newy / 10) + 1)
+            .css("z-index", parseInt(newy / 15) + 1)
             .css("animation-delay", Math.random() + "s");
         });
 
@@ -81,18 +83,35 @@ $(document).ready(function() {
         setInterval(function () {
             time++;
 
-            //speech
+            // set speech text
+
+            // event-based speech
+            // let guysNotAppeared = true;
+            // if ($("#seat").children(".guy").length && guysNotAppeared) {
+            //     speechBubbleText = "fuck, no dudes";
+            //     guysNotAppeared = false;
+            // }
+
+            // timer-based speech
             if (time === 1) {
-                $(".speech-bubble").text("get girls to get points");
+                speechBubbleText = "get girls to get points";
             } else if (time === 10) {
-                $(".speech-bubble").text("drag them to the table");
+                speechBubbleText = "drag them to the table";
             } else if (time === 20) {
-                $(".speech-bubble").text("try to get the highest score before the club closes");
+                speechBubbleText = "try to get the highest score before the club closes";
             } else if (time === 50) {
-                $(".speech-bubble").text("no dudes");
+                speechBubbleText = "no dudes";
             } else if (time === 2000 && !bottle && money >= 500) {
-                $(".speech-bubble").text("buy a bottle");
+                speechBubbleText = "buy a bottle";
             }
+
+            // if (character === "ryan") {
+            //     speechBubbleText = "yo, " + speechBubbleText;
+            // }
+
+            // show speech text
+            $(".speech-bubble").text(speechBubbleText);
+
 
             //update money purchasing power
             if (money < 500) {
@@ -100,23 +119,31 @@ $(document).ready(function() {
             }
             
             let pointsString = "";
-            numGirls = $("#seat").children(".girl").length;
-            numGuys = $("#seat").children(".guy").length;
+            // numGirls = $("#seat").children(".girl").length;
+            // numGuys = $("#seat").children(".guy").length;
             
             // at table, girls = two points, guys = negative one point
             score += 2 * numGirls;
             score -= numGuys;
 
             // add these in points string
-            pointsString += "+2 ".repeat(numGirls);
-            pointsString += "-1 ".repeat(numGuys);
+            // pointsString += "+2 ".repeat(numGirls);
+            // pointsString += "-1 ".repeat(numGuys);
+
+            $('#seat .person').each(function(){
+                if ($(this).hasClass("girl")) {
+                    pointsString += "+2 "
+                } else if ($(this).hasClass("guy")) {
+                    pointsString += "-1 "
+                }
+            });
 
             // show pointsstring, show score
             $("#points").text(pointsString);
             $(".score").text(score);
 
             // if low alcohol, people at table, and after a few seconds of game, people leave table
-            if (Math.random() < .1 && alcohol < 30 && $("#seat").children().length && time > 2000) {
+            if (Math.random() < .15 && alcohol < 30 && $("#seat").children().length) {
 
                 let booted = $("#seat .person:last-child");
                 let xe = booted.offset.left;
@@ -138,7 +165,9 @@ $(document).ready(function() {
                     booted.css({
                         top: newy, 
                         left: newx
-                    }).css("z-index", parseInt(newy));
+                    })
+                    .css("z-index", parseInt(newy / 15) + 1)
+                    .css("animation-delay", Math.random() + "s");
                 });
             }
 
@@ -151,6 +180,7 @@ $(document).ready(function() {
                 let bottleRat = $(".room .person.girl:first-child");
 
                 bottleRat.addClass("selected")
+                .css("z-index", "1");
                 bottleRat.animate({
                     top: yi,
                     left: xi     
@@ -205,7 +235,9 @@ $(document).ready(function() {
             drop: function( event, ui ) {
             $( this )
                 $("#seat").append($(ui.draggable))
-                $(ui.draggable).addClass("selected");
+                $(ui.draggable)
+                .addClass("selected")
+                .css("z-index", "1");
             }
         });
 
@@ -226,7 +258,7 @@ $(document).ready(function() {
                 $(".speech-bubble").text("nice, girls will come now");
                 setTimeout(function(){ 
                     bottle = true 
-                }, 3000);
+                }, 2000);
 
                 money-=500;
                 alcohol+=100;
