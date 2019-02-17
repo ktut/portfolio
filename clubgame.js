@@ -30,6 +30,7 @@ $(document).ready(function() {
         let alcohol = 0;
         let roomWidth = parseFloat($(".room").width());
         let roomHeight = parseFloat($(".room").height());
+        console.log(roomHeight);
 
         //populate fields
         $(".money").text(money);
@@ -39,14 +40,13 @@ $(document).ready(function() {
         $('.room .person').each(function(){
             let newx = roomWidth * Math.random();
             let newy = roomHeight * Math.random();
-  
 
             $(this)
             .css({
                 top: newy, 
                 left: newx
             })
-            .css("z-index", parseInt(newy))
+            .css("z-index", parseInt(newy / 10) + 1)
             .css("animation-delay", Math.random() + "s");
         });
 
@@ -72,7 +72,7 @@ $(document).ready(function() {
             $("#points").text(pointsString);
             $(".score").text(score);
 
-            // sometimes, if low alcohol, and people at table, they leave
+            // if low alcohol, people leave table
             if (Math.random() < .1 && alcohol < 30 && $("#seat").children().length) {
 
                 let booted = $("#seat .person:last-child");
@@ -80,7 +80,12 @@ $(document).ready(function() {
                 let ye = booted.offset.top;
                 let newx = roomWidth * Math.random();
                 let newy = roomHeight * Math.random();
-                booted.removeClass("selected");
+
+                booted
+                .removeClass("selected")
+                .addClass("pissed")
+                .delay(1000)
+                .removeClass("pissed");
 
                 booted.animate({
                     top: ye,
@@ -194,7 +199,7 @@ $(document).ready(function() {
 
                 $(".money").text(money);
             } else {
-                console.log("no money");
+                $(this).addClass("pissed").delay(1000).removeClass("pissed");
             }
         });
 
