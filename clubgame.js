@@ -18,6 +18,7 @@ $(document).ready(function() {
         $("#title").removeClass("active");
         $("#club").addClass("active");
         $("#info").addClass("active");
+        $(".char-select").fadeOut();
 
         //start game
         playGame();
@@ -32,6 +33,7 @@ $(document).ready(function() {
         }, 200);
 
         // declare initial global variables
+        let time = 0;
         let bottle = false;
         let numGirls = 0;
         let numGuys = 0;
@@ -75,8 +77,22 @@ $(document).ready(function() {
         //show stats in console
         showStats();
 
-        // things to do per second
+        // things to do per half second
         setInterval(function () {
+            time++;
+
+            //speech
+            if (time === 1) {
+                $(".speech-bubble").text("get girls to get points");
+            } else if (time === 10) {
+                $(".speech-bubble").text("drag them to the table");
+            } else if (time === 20) {
+                $(".speech-bubble").text("try to get the highest score before the club closes");
+            } else if (time === 50) {
+                $(".speech-bubble").text("no dudes");
+            } else if (time === 2000 && !bottle && money >= 500) {
+                $(".speech-bubble").text("buy a bottle");
+            }
 
             //update money purchasing power
             if (money < 500) {
@@ -99,8 +115,8 @@ $(document).ready(function() {
             $("#points").text(pointsString);
             $(".score").text(score);
 
-            // if low alcohol, people leave table
-            if (Math.random() < .1 && alcohol < 30 && $("#seat").children().length) {
+            // if low alcohol, people at table, and after a few seconds of game, people leave table
+            if (Math.random() < .1 && alcohol < 30 && $("#seat").children().length && time > 2000) {
 
                 let booted = $("#seat .person:last-child");
                 let xe = booted.offset.left;
@@ -154,7 +170,7 @@ $(document).ready(function() {
 
             //spawn person
             
-        }, 200); 
+        }, 500); 
         
         
         // people random movement logic
@@ -207,6 +223,7 @@ $(document).ready(function() {
         $(".buy-bottle").on( "click", function() {
             if (!bottle && money >= 500) {
                 $(".bottle").fadeIn(1000);
+                $(".speech-bubble").text("nice, girls will come now");
                 setTimeout(function(){ 
                     bottle = true 
                 }, 3000);
