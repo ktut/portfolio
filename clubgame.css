@@ -232,14 +232,16 @@ button {
     background-size: cover;
     background-position: center;
     /* background-image: url(./assets/table.png); */
-    background: darkblue;
+    background: #555;
     bottom: 20px;
     right: 0;
     width: 200px;
     height: 30vh;
     z-index: 1;
-    box-shadow: -9px 10px 22px 0px rgba(0,0,0,0.75);
+    
+    box-shadow: 0 18px 6px -6px black;
 }
+
 
 .character {
     position: absolute;
