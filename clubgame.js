@@ -42,11 +42,16 @@ $(document).ready(function() {
         let roomHeight = parseFloat($(".room").height());
         
         
-        // show right character
+        // character-specific things
         if (character === "adam") {
             $(".character .adam").show();
+            $('#seat')
+            .append($('<div class="person girl">'))
+            .append($('<div class="person girl">'))
+            .append($('<div class="person girl">'));
         } else {
             $(".character .ryan").show();
+            money += 1000;
         }
 
         //populate fields
@@ -72,6 +77,11 @@ $(document).ready(function() {
 
         // things to do per second
         setInterval(function () {
+
+            //update money purchasing power
+            if (money < 500) {
+                $('.buy-bottle').prop("disabled",true);
+            }
             
             let pointsString = "";
             numGirls = $("#seat").children(".girl").length;
@@ -143,7 +153,7 @@ $(document).ready(function() {
             }
 
             //spawn person
-            // $('.room').append($('<div class="person girl">'));
+            
         }, 200); 
         
         
