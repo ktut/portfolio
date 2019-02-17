@@ -8,7 +8,8 @@ h2 {
 h1 {
     font-size: 4rem;
     line-height: 85%;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
+    text-align: center;
 }
 
 h2 {
@@ -89,6 +90,30 @@ button {
     height: calc(100vh - 40px);
 }
 
+.start-game {
+    display: none;
+}
+
+.char-select {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.char-select h2 {
+    flex-basis: 100%;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.char-select div img {
+    width: 100%;
+}
+
+.char-select > div {
+    flex-basis: 45%;
+}
+
 #title:not(.active),
 #club:not(.active),
 #info:not(.active) {
@@ -157,7 +182,7 @@ button {
     width: 100%;
     margin: 25px auto 0;
     height: 40%;
-    min-height: 200px;
+    min-height: 180px;
 }
 
 @media (min-height: 666px) {
@@ -193,6 +218,16 @@ button {
     left: 0;
     bottom: 20px;
     z-index: 1;
+    height: 150px;
+    width: 100px;
+}
+
+.character > div {
+    display: none;
+}
+
+.character div img {
+    width: 100%;
 }
 
 .bottle {
@@ -210,7 +245,7 @@ button {
 
 .person {
     width: 50px;
-    height: 100px;
+    height: 120px;
     margin-top: -50px;
     margin-left: -15px;
     z-index: 1;
@@ -233,11 +268,15 @@ button {
 }
 
 .person {
-    background: pink;
+    background-size: cover;
+    background-position: center;
+    /* background: pink; */
+    background-image: url(./assets/girl1.gif);
 }
 
 .person.guy {
-    background: olive;
+    /* background: olive; */
+    background-image: url(./assets/guy1.gif);
 }
 
 .person > img {

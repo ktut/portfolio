@@ -2,6 +2,18 @@ window.addEventListener( 'touchmove', function() {})
 
 $(document).ready(function() {
 
+    let character = "";
+
+    $(".char-select > div").on( "click", function() {
+        $(this).siblings("div").fadeOut();
+        $(".start-game").fadeIn();
+        if ( $( this ).hasClass( "adam" ) ) {
+            character = "adam";
+        } else {
+            character = "ryan";
+        }
+    });
+
     $(".start-game").on( "click", function() {
         $("#title").removeClass("active");
         $("#club").addClass("active");
@@ -30,7 +42,14 @@ $(document).ready(function() {
         let alcohol = 0;
         let roomWidth = parseFloat($(".room").width());
         let roomHeight = parseFloat($(".room").height());
-        console.log(roomHeight);
+        
+        
+        // show right character
+        if (character === "adam") {
+            $(".character .adam").show();
+        } else {
+            $(".character .ryan").show();
+        }
 
         //populate fields
         $(".money").text(money);
