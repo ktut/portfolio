@@ -119,8 +119,8 @@ $(document).ready(function() {
             }
             
             let pointsString = "";
-            // numGirls = $("#seat").children(".girl").length;
-            // numGuys = $("#seat").children(".guy").length;
+            numGirls = $("#seat").children(".girl").length;
+            numGuys = $("#seat").children(".guy").length;
             
             // at table, girls = two points, guys = negative one point
             score += 2 * numGirls;
