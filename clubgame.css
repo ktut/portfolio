@@ -310,7 +310,10 @@ button {
 
 /* Animation description */
 .wobble {
-    animation: wobble 5s ease-in-out 2s infinite alternate both;
+    animation: wobble 1s ease-in-out infinite alternate both;
+}
+.sidetoside {
+    animation: sidetoside 1.4s ease-in-out infinite alternate both;
 }
 .pointsshift {
     animation: pointsshift 0.6s ease-in infinite;
@@ -318,7 +321,12 @@ button {
 /* Animation steps */
 @keyframes wobble {
     0% { transform: perspective(500px) rotateX(0deg); }
-    100% { transform: perspective(500px) rotateX(30deg); }
+    100% { transform: perspective(500px) rotateX(20deg); }
+}
+
+@keyframes sidetoside {
+    0% { transform: rotateZ(-10deg); }
+    100% { transform: rotateZ(10deg); }
 }
 
 @keyframes pointsshift {
