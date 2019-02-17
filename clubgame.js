@@ -72,7 +72,7 @@ $(document).ready(function() {
 
         // things to do per second
         setInterval(function () {
-            time++;
+            
             let pointsString = "";
             numGirls = $("#seat").children(".girl").length;
             numGuys = $("#seat").children(".guy").length;
