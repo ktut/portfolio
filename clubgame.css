@@ -36,13 +36,12 @@ p {
 
 button {
     font-family: 'Righteous', sans-serif !important;
-    background: deepskyblue;
+    background: greenyellow;
     padding: 7px 9px 6px;
 }
 
 a {
-
-    color: deepskyblue;
+    color: greenyellow;
 }
 
 
@@ -205,7 +204,8 @@ a {
     text-align: center;
     font-size: 1.8rem;
     font-family: 'ZCOOL QingKe HuangYou', cursive !important;
-    padding-top: 10px;
+    text-shadow: 0px 0px 15px rgba(0, 0, 0, 1);
+    padding-top: 25px;
     z-index: 1000;
 }
 
