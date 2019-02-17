@@ -192,7 +192,7 @@ $(document).ready(function() {
         });
 
         // extract money from dudes
-        $(document).on("click","#seat .person.guy",function() {
+        $("#seat .person.guy").on("click", function() {
             if (Math.random() < .2) {
                 console.log("money");
                 money += 40;
