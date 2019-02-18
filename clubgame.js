@@ -256,7 +256,7 @@ $(document).ready(function() {
                     $(".endcomments").text("weird flex but ok");
                 } else if (score < 2000) {
                     $(".endcomments").text("...niiiice");
-                } else if (score >= 2500) {
+                } else if (score >= 2000) {
                     $(".endcomments").text("GOD OF THE NIGHT, THE SWEDES ARE HEREBY YOURS");
                 }
 
