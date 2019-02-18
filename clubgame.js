@@ -129,9 +129,9 @@ $(document).ready(function() {
             // timer-based speech
             if (time === 1) {
                 speechBubbleText = "drag girls to the table for points";
-            } else if (time === 10 && $("#seat").children(".guy").length) {
+            } else if (time === 15 && $("#seat").children(".guy").length) {
                 speechBubbleText = "dudes make you lose points. no dudes";
-            } else if (time === 20) {
+            } else if (time === 30) {
                 speechBubbleText = "get your score up before the club closes at 2AM";
             } else if (time === 100) {
                 speechBubbleText = "or just chill, yo";
