@@ -259,12 +259,13 @@ a {
     /* background-image: url(./assets/table.png); */
     background: #555;
     bottom: 20px;
-    right: 0;
-    width: 200px;
+    right: 4px;
+    width: 190px;
     height: 30vh;
     z-index: 1;
     
     box-shadow: 0 18px 6px -6px black;
+    border-radius: 10px;
 }
 
 
@@ -440,7 +441,7 @@ a {
 /* Animation steps */
 @keyframes wobble {
     0% { transform: perspective(500px) rotateX(0deg); }
-    100% { transform: perspective(500px) rotateX(20deg); }
+    100% { transform: perspective(500px) rotateX(20deg) scale(1.05); }
 }
 
 @keyframes sidetoside {
