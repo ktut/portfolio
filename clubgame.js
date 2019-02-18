@@ -135,7 +135,7 @@ $(document).ready(function() {
             } else if (time === 140) {
                 speechBubbleText = "pew pew pew";
             } else if (time === 150) {
-                speechBubbleText = "i'm tired but we gotta go harder";
+                speechBubbleText = "i'm tired but we gotta go harder somehow";
             } else if (time === 170) {
                 speechBubbleText = "where the hos at";
             } else if (time === 170) {
@@ -244,13 +244,13 @@ $(document).ready(function() {
                 $("#end").addClass("active");
                 $(".endscore").text(score);
                 if (score < 500) {
-                    $(".endcomments").text("shoulda stayed home");
-                } else if (score < 1000) {
-                    $(".endcomments").text("pretty good, I guess");
+                    $(".endcomments").text("next time, stayed home");
                 } else if (score < 1500) {
-                    $(".endcomments").text("too many dudes, otherwise you done good");
-                } else if  (score >= 1500) {
-                    $(".endcomments").text("thou art a god of the night");
+                    $(".endcomments").text("weird flex but ok");
+                } else if (score < 2000) {
+                    $(".endcomments").text("niiice");
+                } else if (score >= 2500) {
+                    $(".endcomments").text("GOD OF THE NIGHT, THE SWEDES ARE HEREBY YOURS");
                 }
 
                 //start game
