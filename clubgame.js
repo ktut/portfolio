@@ -122,14 +122,14 @@ $(document).ready(function() {
             // timer-based speech
             if (time === 1) {
                 speechBubbleText = "drag girls to the table for points";
-            } else if (time === 10) {
-                speechBubbleText = "drag dey ass";
+            } else if (time === 10 && $("#seat").children(".guy").length) {
+                speechBubbleText = "dudes make you lose points. no dudes";
             } else if (time === 20) {
-                speechBubbleText = "try to get the highest score before the club closes";
-            } else if (time === 50) {
-                speechBubbleText = "no dudes";
+                speechBubbleText = "get your score up before the club closes at 2AM";
+            } else if (time === 100) {
+                speechBubbleText = "or just chill, yo";
             } else if (time === 2000 && !bottle && money >= 500) {
-                speechBubbleText = "buy a bottle";
+                speechBubbleText = "buy a bottle. hos may flock";
             }
 
             // if (character === "ryan") {
@@ -224,10 +224,21 @@ $(document).ready(function() {
                 $(".bottle").fadeOut(1000);
             }
 
-            //spawn person
+            // end game
+            if (time === 250) {
+                $("#title").removeClass("active");
+                $("#club").removeClass("active");
+                $("#info").removeClass("active");
+                $("#end").addClass("active");
+                $(".endscore").text(score);
+
+                //start game
+                playGame();
+            }
             
         }, 500); 
         
+        // end time-based stuff
         
         // people random movement logic
         function makeNewPosition(){
@@ -301,6 +312,11 @@ $(document).ready(function() {
             } else {
                 $(this).addClass("pissed").delay(1000).removeClass("pissed");
             }
+        });
+
+
+        $("#end .play-again").on("click", function() {
+            window.location.reload();
         });
 
         function showStats() {

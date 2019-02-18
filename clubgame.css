@@ -149,7 +149,8 @@ a {
 
 #title:not(.active),
 #club:not(.active),
-#info:not(.active) {
+#info:not(.active),
+#end:not(.active) {
     height: 0;
     opacity: 0;
 }
@@ -196,6 +197,18 @@ a {
     align-items: center;
     padding: 15px;
     background: black;
+}
+
+
+#end.active {
+    height: auto;
+    opacity: 1;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#end .endscore {
+    color: greenyellow;
 }
 
 #time {
@@ -287,6 +300,7 @@ a {
     box-sizing: border-box;
     color: #333 !important;
     font-size: 0.8rem;
+    line-height: 1.1;
 }
 
 .speech-bubble:after {
@@ -421,7 +435,7 @@ a {
     animation: pointsshift 0.6s ease-in infinite;
 }
 .pulse {
-    animation: pulse 0.6s ease-in;
+    animation: pulse 1.2s ease-in;
 }
 /* Animation steps */
 @keyframes wobble {
@@ -470,6 +484,6 @@ a {
         transform: scale(1);
     }
     100% {
-        transform: scale(3);
+        transform: scale(2.5);
     }
 }
