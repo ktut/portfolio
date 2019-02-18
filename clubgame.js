@@ -244,7 +244,7 @@ $(document).ready(function() {
                 $("#end").addClass("active");
                 $(".endscore").text(score);
                 if (score < 500) {
-                    $(".endcomments").text("next time, stayed home");
+                    $(".endcomments").text("next time, stay home");
                 } else if (score < 1500) {
                     $(".endcomments").text("weird flex but ok");
                 } else if (score < 2000) {
