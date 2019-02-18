@@ -19,7 +19,7 @@ $(document).ready(function() {
         $("#title").removeClass("active");
         $("#club").addClass("active");
         $("#info").addClass("active");
-        $(".char-select").fadeOut();
+        $(".char-select").slideUp();
 
         //start game
         playGame();
@@ -35,6 +35,7 @@ $(document).ready(function() {
 
         // declare initial global variables
         let time = 0;
+        let hourTime = "10:00 PM";
         let speechBubbleText = "";
         let bottle = false;
         let numGirls = 0;
@@ -83,6 +84,32 @@ $(document).ready(function() {
         setInterval(function () {
             time++;
 
+            // on time change, pulse time visually
+            if (time % 50 === 0) {
+                $("#time").addClass("pulse").delay(1000).queue(function(){
+                    $("#time").removeClass("pulse").dequeue();
+                });          
+            }
+
+            // change clock
+            if (time === 50) {
+                hourTime = "11:00 PM";
+            } else if (time === 100) {
+                hourTime = "12:00 AM";
+            }else if (time === 150) {
+                hourTime = "1:00 AM";
+            }else if (time === 200) {
+                hourTime = "2:00 AM";
+                $("#time").css("color", "red");
+            }
+
+            if (time > 250) {
+                console.log("game over");
+            } else {
+                $("#time").text(hourTime);
+            }
+
+
             // set speech text
 
             // event-based speech
@@ -94,9 +121,9 @@ $(document).ready(function() {
 
             // timer-based speech
             if (time === 1) {
-                speechBubbleText = "get girls to get points";
+                speechBubbleText = "drag girls to the table for points";
             } else if (time === 10) {
-                speechBubbleText = "drag them to the table";
+                speechBubbleText = "drag dey ass";
             } else if (time === 20) {
                 speechBubbleText = "try to get the highest score before the club closes";
             } else if (time === 50) {
@@ -125,10 +152,6 @@ $(document).ready(function() {
             // at table, girls = two points, guys = negative one point
             score += 2 * numGirls;
             score -= numGuys;
-
-            // add these in points string
-            // pointsString += "+2 ".repeat(numGirls);
-            // pointsString += "-1 ".repeat(numGuys);
 
             $('#seat .person').each(function(){
                 if ($(this).hasClass("girl")) {
@@ -192,10 +215,13 @@ $(document).ready(function() {
             //reduce alcohol every second, if people at table
             if (bottle && alcohol > 0 && $("#seat").children().length) {
                 alcohol = alcohol - $("#seat").children().length;
+
+
+                $("#champagne").css("transform", "rotate(-10deg) translateY(" + (100 - parseInt(alcohol)) + "px)");
             } else if (bottle && alcohol < 1) {
                 bottle = false;
                 alcohol = 0;
-                $(".bottle").fadeOut();
+                $(".bottle").fadeOut(1000);
             }
 
             //spawn person
@@ -256,9 +282,7 @@ $(document).ready(function() {
             if (!bottle && money >= 500) {
                 $(".bottle").fadeIn(1000);
                 $(".speech-bubble").text("nice, girls will come now");
-                setTimeout(function(){ 
-                    bottle = true 
-                }, 2000);
+                bottle = true 
 
                 money-=500;
                 alcohol+=100;

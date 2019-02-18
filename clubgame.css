@@ -31,13 +31,13 @@ h3 {
 }
 
 p {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
 }
 
 button {
     font-family: 'Righteous', sans-serif !important;
     background: greenyellow;
-    padding: 7px 9px 6px;
+    padding: 6px 7px 4px;
 }
 
 a {
@@ -60,7 +60,7 @@ a {
     height: calc(100vh - 40px);
     /* min-height: 600px; */
     width: 100%;
-    max-width: 400px;
+    max-width: 420px;
     margin: 0 auto;
 
     
@@ -142,7 +142,7 @@ a {
 }
 
 .char-select > div {
-    flex-basis: 35%;
+    flex-basis: 37%;
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -198,19 +198,15 @@ a {
     background: black;
 }
 
-.time {
+#time {
     position: absolute;
     width: 100%;
     text-align: center;
-    font-size: 1.8rem;
+    font-size: 1.3rem;
     font-family: 'ZCOOL QingKe HuangYou', cursive !important;
     text-shadow: 0px 0px 15px rgba(0, 0, 0, 1);
     padding-top: 25px;
     z-index: 1000;
-}
-
-.time > span {
-    position: relative !important;
 }
 
 /* CLUB ITEM POSITIONING */
@@ -310,15 +306,27 @@ a {
 
 .bottle {
     display: none;
-    z-index: 100 !important;
-    top: 10%;
+    z-index: 500 !important;
+    bottom: 10%;
     left: 30%;
-    width: 80px;
+    width: 100px;
+    height: 160px;
+    overflow-y: hidden;
 }
 
-.person > img,
-.bottle > img {
-    width: 100%;
+#champagne {
+    width: 30%;
+    position: absolute;
+    left: 5%;
+    transform: rotate(-10deg);
+    z-index: -1;
+    transition: transform 0.2s;
+}
+
+.bucket {
+    position: absolute;
+    width: 80%;
+    bottom: 0;
 }
 
 .person {
@@ -328,6 +336,10 @@ a {
     margin-right: -15px;
     z-index: 1;
     touch-action: none;
+}
+
+.person > img {
+    width: 100%;
 }
 
 /* non-selected people should dance */
@@ -373,18 +385,22 @@ a {
 }
 
 #seat > .person {
-    z-index: 500;
+    z-index: 1 !important;
 }
 
 #points {
     bottom: 20px;
     width: 100%;
     display: block;
-    color: white;
+    color: greenyellow;
     letter-spacing: 6px;
     transform: translateY(-80px);
     line-height: 3;
     z-index: 1000 !important;
+}
+
+.score {
+    color: greenyellow;
 }
 
 
@@ -403,6 +419,9 @@ a {
 }
 .pointsshift {
     animation: pointsshift 0.6s ease-in infinite;
+}
+.pulse {
+    animation: pulse 0.6s ease-in;
 }
 /* Animation steps */
 @keyframes wobble {
@@ -429,19 +448,28 @@ a {
       opacity: 0;
       top: -20px;
     }
-  }
+}
 
-  @keyframes dance {
+@keyframes dance {
     from, 49% { transform-origin: -50% 100%; }
     50%, 75%, to { transform-origin: 150% 100%; }
     25% { transform: rotate(-10deg); }
     50% { transform: rotate(0deg); }
     75% { transform: rotate(10deg); }
-  }
+}
 
-  @keyframes color {
-      0% { background-color: darkred; }
-      100% {
-          background-color: black;
-      }
-  }
+@keyframes color {
+    0% { background-color: darkred; }
+    100% {
+        background-color: black;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(3);
+    }
+}
