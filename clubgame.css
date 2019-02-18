@@ -21,7 +21,7 @@ h1 {
 }
 
 h2 {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     line-height: 110%;
 }
 
@@ -81,10 +81,10 @@ a {
 @media (max-width: 450px) {
     .canvas-contain {
         display: block;
-        height: 90vh;
+        height: 88vh;
     }
     #game {
-        height: 90vh;
+        height: 88vh;
     }
 }
 
