@@ -271,7 +271,7 @@ a {
 .character {
     position: absolute;
     left: 4vw;
-    bottom: 20px;
+    bottom: 30px;
     z-index: 1;
     height: 30vh;
     width: 16vh;

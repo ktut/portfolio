@@ -103,7 +103,7 @@ $(document).ready(function() {
                 $("#time").css("color", "red");
             }
 
-            if (time > 250) {
+            if (time > 220) {
                 console.log("game over");
             } else {
                 $("#time").text(hourTime);
@@ -128,8 +128,20 @@ $(document).ready(function() {
                 speechBubbleText = "get your score up before the club closes at 2AM";
             } else if (time === 100) {
                 speechBubbleText = "or just chill, yo";
-            } else if (time === 2000 && !bottle && money >= 500) {
+            } else if (time === 100 && !bottle && money >= 500) {
                 speechBubbleText = "buy a bottle. hos may flock";
+            } else if (time === 110) {
+                speechBubbleText = "you guyyyys";
+            } else if (time === 140) {
+                speechBubbleText = "pew pew pew";
+            } else if (time === 150) {
+                speechBubbleText = "i'm tired but we gotta go harder";
+            } else if (time === 170) {
+                speechBubbleText = "where the hos at";
+            } else if (time === 170) {
+                speechBubbleText = "i guess... they're here";
+            } else if (time === 210) {
+                speechBubbleText = "gettin sleepy, y'all";
             }
 
             // if (character === "ryan") {
@@ -225,12 +237,21 @@ $(document).ready(function() {
             }
 
             // end game
-            if (time === 250) {
+            if (time === 220) {
                 $("#title").removeClass("active");
                 $("#club").removeClass("active");
                 $("#info").removeClass("active");
                 $("#end").addClass("active");
                 $(".endscore").text(score);
+                if (score < 500) {
+                    $(".endcomments").text("shoulda stayed home");
+                } else if (score < 1000) {
+                    $(".endcomments").text("pretty good, I guess");
+                } else if (score < 1500) {
+                    $(".endcomments").text("too many dudes, otherwise you done good");
+                } else if  (score >= 1500) {
+                    $(".endcomments").text("thou art a god of the night");
+                }
 
                 //start game
                 playGame();
