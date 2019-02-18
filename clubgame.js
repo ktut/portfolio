@@ -20,6 +20,7 @@ $(document).ready(function() {
         $("#club").addClass("active");
         $("#info").addClass("active");
         $(".char-select").slideUp();
+        $(".start-game").slideUp();
 
         //start game
         playGame();
