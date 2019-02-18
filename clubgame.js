@@ -85,7 +85,7 @@ $(document).ready(function() {
             time++;
 
             // on time change, pulse time visually
-            if (time % 50 === 0) {
+            if (time % 25 === 0) {
                 $("#time").addClass("pulse").delay(1000).queue(function(){
                     $("#time").removeClass("pulse").dequeue();
                 });          
@@ -94,11 +94,17 @@ $(document).ready(function() {
             // change clock
             if (time === 50) {
                 hourTime = "11:00 PM";
+            } else if (time === 75) {
+                hourTime = "11:30 PM";
             } else if (time === 100) {
                 hourTime = "12:00 AM";
-            }else if (time === 150) {
+            } else if (time === 125) {
+                hourTime = "12:30 AM";
+            } else if (time === 150) {
                 hourTime = "1:00 AM";
-            }else if (time === 200) {
+            } else if (time === 175) {
+                hourTime = "1:30 AM";
+            } else if (time === 200) {
                 hourTime = "2:00 AM";
                 $("#time").css("color", "red");
             }
@@ -248,7 +254,7 @@ $(document).ready(function() {
                 } else if (score < 1500) {
                     $(".endcomments").text("weird flex but ok");
                 } else if (score < 2000) {
-                    $(".endcomments").text("niiice");
+                    $(".endcomments").text("...niiiice");
                 } else if (score >= 2500) {
                     $(".endcomments").text("GOD OF THE NIGHT, THE SWEDES ARE HEREBY YOURS");
                 }
