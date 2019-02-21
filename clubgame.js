@@ -81,80 +81,99 @@ $(document).ready(function() {
         //show stats in console
         showStats();
 
-        // things to do per half second
+        // things to do per time interval (400ms)
         setInterval(function () {
             time++;
 
-            // on time change, pulse time visually
-            if (time % 25 === 0) {
-                $("#time").addClass("pulse").delay(1000).queue(function(){
-                    $("#time").removeClass("pulse").dequeue();
-                });          
-            }
+            // time-related function
+            timeline();
+            
+            function timeline() {
 
-            // change clock
-            if (time === 50) {
-                hourTime = "11:00 PM";
-            } else if (time === 75) {
-                hourTime = "11:30 PM";
-            } else if (time === 100) {
-                hourTime = "12:00 AM";
-            } else if (time === 125) {
-                hourTime = "12:30 AM";
-            } else if (time === 150) {
-                hourTime = "1:00 AM";
-            } else if (time === 175) {
-                hourTime = "1:30 AM";
-            } else if (time === 200) {
-                hourTime = "2:00 AM";
-                $("#time").css("color", "red");
-            }
+                // if time's up, end game
+                if (time === 220) {
+                    $("#title").hide();
+                    $("#club").removeClass("active");
+                    $("#info").hide();
+                    $("#end").addClass("active");
+                    $(".endscore").text(score);
+                    if (score < 500) {
+                        $(".endcomments").text("next time, stay home");
+                    } else if (score < 1500) {
+                        $(".endcomments").text("weird flex but ok");
+                    } else if (score < 2000) {
+                        $(".endcomments").text("...niiiice");
+                    } else if (score >= 2000) {
+                        $(".endcomments").text("GOD OF THE NIGHT, ZE SWEDES ARE YOURS");
+                    }
 
-            if (time > 220) {
-                console.log("game over");
-            } else {
-                $("#time").text(hourTime);
-            }
+                    return true;
+                
+                    // at certain intervals, do things with time
+                } else if (time % 25 === 0) {
+
+                    // change clock
+                    if (time === 25) {
+                        hourTime = "10:30 PM";
+                    } else if (time === 50) {
+                        hourTime = "11:00 PM";
+                    } else if (time === 75) {
+                        hourTime = "11:30 PM";
+                    } else if (time === 100) {
+                        hourTime = "12:00 AM";
+                    } else if (time === 125) {
+                        hourTime = "12:30 AM";
+                    } else if (time === 150) {
+                        hourTime = "1:00 AM";
+                    } else if (time === 175) {
+                        hourTime = "1:30 AM";
+                    } else if (time === 200) {
+                        hourTime = "2:00 AM";
+                        $("#time").css("color", "red");
+                    }
+                    
+                    // update time display
+                    $("#time")
+                        .text(hourTime)
+                        .addClass("pulse")
+                        .delay(1000)
+                        .queue(function(){
+                            $("#time").removeClass("pulse").dequeue();
+                        });
+                }
+            };
+            
 
 
             // set speech text
 
-            // event-based speech
-            // let guysNotAppeared = true;
-            // if ($("#seat").children(".guy").length && guysNotAppeared) {
-            //     speechBubbleText = "fuck, no dudes";
-            //     guysNotAppeared = false;
-            // }
-
             // timer-based speech
             if (time === 1) {
-                speechBubbleText = "drag girls to the table for points";
+                speechBubbleText = "drag girls to our table for points";
             } else if (time === 15 && $("#seat").children(".guy").length) {
-                speechBubbleText = "dudes make you lose points. no dudes";
+                speechBubbleText = "with enough girls, the club will give you a free bottle";
             } else if (time === 30) {
-                speechBubbleText = "get your score up before the club closes at 2AM";
-            } else if (time === 100) {
-                speechBubbleText = "or just chill, yo";
+                speechBubbleText = "...or just buy one yourself";
+            } else if (time === 45) {
+                speechBubbleText = "dudes make you lose points. no dudes";
+            } else if (time === 60) {
+                speechBubbleText = "...unless you want to click them to milk them for cash";
             } else if (time === 100 && !bottle && money >= 500) {
-                speechBubbleText = "buy a bottle. hos may flock";
+                speechBubbleText = "I guess we should just buy a bottle already";
             } else if (time === 110) {
-                speechBubbleText = "you guyyyys";
+                speechBubbleText = "get your score up before the club closes at 2AM";
             } else if (time === 140) {
-                speechBubbleText = "pew pew pew";
+                speechBubbleText = "you guyyyys";
             } else if (time === 150) {
                 speechBubbleText = "i'm tired but we gotta go harder somehow";
             } else if (time === 170) {
                 speechBubbleText = "where the hos at";
-            } else if (time === 170) {
+            } else if (time === 180) {
                 speechBubbleText = "i guess... they're here";
             } else if (time === 210) {
                 speechBubbleText = "gettin sleepy, y'all";
             }
-
-            // if (character === "ryan") {
-            //     speechBubbleText = "yo, " + speechBubbleText;
-            // }
-
+            
             // show speech text
             $(".speech-bubble").text(speechBubbleText);
 
@@ -188,22 +207,22 @@ $(document).ready(function() {
             if (Math.random() < .15 && alcohol < 30 && $("#seat").children().length) {
 
                 let booted = $("#seat .person:last-child");
-                let xe = booted.offset.left;
-                let ye = booted.offset.top;
+                // let xe = booted.offset.left;
+                // let ye = booted.offset.top;
                 let newx = roomWidth * Math.random();
                 let newy = roomHeight * Math.random();
 
                 booted
                 .removeClass("selected")
                 .addClass("pissed")
-                .delay(1000)
-                .removeClass("pissed");
+                .delay(2000);
 
                 booted.animate({
-                    top: ye,
-                    left: xe     
+                    top: -200,
+                    left: 0     
                 }, 550, function() {
                     $(".room").append(booted);
+                    booted.removeClass("pissed");
                     booted.css({
                         top: newy, 
                         left: newx
@@ -236,35 +255,15 @@ $(document).ready(function() {
                 alcohol = alcohol - $("#seat").children().length;
 
 
-                $("#champagne").css("transform", "rotate(-10deg) translateY(" + (100 - parseInt(alcohol)) + "px)");
+                $("#champagne").css("transform", "rotate(-10deg) translateY(" + (100 - parseInt(alcohol / 2)) + "px)");
             } else if (bottle && alcohol < 1) {
                 bottle = false;
                 alcohol = 0;
-                $(".bottle").fadeOut(1000);
+                $(".bottle").fadeOut(2000);
             }
 
-            // end game
-            if (time === 220) {
-                $("#title").removeClass("active");
-                $("#club").removeClass("active");
-                $("#info").removeClass("active");
-                $("#end").addClass("active");
-                $(".endscore").text(score);
-                if (score < 500) {
-                    $(".endcomments").text("next time, stay home");
-                } else if (score < 1500) {
-                    $(".endcomments").text("weird flex but ok");
-                } else if (score < 2000) {
-                    $(".endcomments").text("...niiiice");
-                } else if (score >= 2000) {
-                    $(".endcomments").text("GOD OF THE NIGHT, THE SWEDES ARE HEREBY YOURS");
-                }
-
-                //start game
-                playGame();
-            }
             
-        }, 500); 
+        }, 400); 
         
         // end time-based stuff
         
@@ -319,26 +318,26 @@ $(document).ready(function() {
         // buy bottles
         $(".buy-bottle").on( "click", function() {
             if (!bottle && money >= 500) {
-                $(".bottle").fadeIn(1000);
-                $(".speech-bubble").text("nice, girls will come now");
-                bottle = true 
+                $(".bottle").fadeIn(2000);
+                bottle = true;
 
                 money-=500;
-                alcohol+=100;
+                alcohol+=200;
                 $(".money").text(money);
+                showStats();
             }
-            showStats();
         });
 
         // extract money from dudes
         $("#seat .person.guy").on("click", function() {
+            console.log("clicked");
             if (Math.random() < .2) {
                 console.log("money");
                 money += 40;
 
                 $(".money").text(money);
             } else {
-                $(this).addClass("pissed").delay(1000).removeClass("pissed");
+                $(this).addClass("pissed").delay(1500).removeClass("pissed");
             }
         });
 
