@@ -66,8 +66,8 @@ $(document).ready(function() {
 
         // place people randomly in room
         $('.room .person').each(function(){
-            let newx = roomWidth * Math.random();
-            let newy = roomHeight * Math.random();
+            let newx = 2 * parseInt(roomWidth / 2 * Math.random());
+            let newy = 10 * parseInt(roomHeight / 10 * Math.random());
 
             $(this)
             .css({
@@ -82,7 +82,7 @@ $(document).ready(function() {
         showStats();
 
         // things to do per time interval (400ms)
-        setInterval(function () {
+        const t = setInterval(function () {
             time++;
 
             // time-related function
@@ -107,7 +107,7 @@ $(document).ready(function() {
                         $(".endcomments").text("GOD OF THE NIGHT, ZE SWEDES ARE YOURS");
                     }
 
-                    return true;
+                    clearInterval(t);
                 
                     // at certain intervals, do things with time
                 } else if (time % 25 === 0) {
@@ -173,7 +173,7 @@ $(document).ready(function() {
             } else if (time === 210) {
                 speechBubbleText = "gettin sleepy, y'all";
             }
-            
+
             // show speech text
             $(".speech-bubble").text(speechBubbleText);
 
@@ -250,12 +250,22 @@ $(document).ready(function() {
                 });
             }
 
-            //reduce alcohol every second, if people at table
+            //r if there's a bottle
             if (bottle && alcohol > 0 && $("#seat").children().length) {
+                // reduce alcohol
                 alcohol = alcohol - $("#seat").children().length;
 
+                // make random guests drunk
+                if (alcohol % 4 === 0) {
+                    let random = Math.ceil(Math.random()*$("#seat").children().length);
+                    console.log(random);
+                    $("#seat").children().eq( random ).addClass("drinking");
+                }
 
+                // lower champagne bottle into ice bucket
                 $("#champagne").css("transform", "rotate(-10deg) translateY(" + (100 - parseInt(alcohol / 2)) + "px)");
+
+            // if bottle runs out
             } else if (bottle && alcohol < 1) {
                 bottle = false;
                 alcohol = 0;
@@ -264,8 +274,13 @@ $(document).ready(function() {
 
             
         }, 400); 
-        
-        // end time-based stuff
+        // ***** end time-based stuff ***** 
+
+
+
+
+
+
         
         // people random movement logic
         function makeNewPosition(){
