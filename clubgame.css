@@ -387,13 +387,13 @@ a {
     transform: scale(1.1);
 }
 
-.person.pissed {
+/* .person.pissed {
     border: 1px solid red;
 }
 
 .person.drinking {
     border: 1px solid yellow;
-}
+} */
 
 .person {
     background-size: cover;
