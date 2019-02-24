@@ -28,15 +28,14 @@ $(document).ready(function() {
 
     function playGame() {
        
-        // this may or may not work
+        // trying to get mobile address bar to hide, may not work
         setTimeout(function(){
-            // Hide the address bar!
             window.scrollTo(0, 1);
         }, 200);
 
         // declare initial global variables
         let time = 0;
-        let hourTime = "10:00 PM";
+        let timeString = "10:00 PM";
         let speechBubbleText = "";
         let bottle = false;
         let numGirls = 0;
@@ -52,6 +51,8 @@ $(document).ready(function() {
         if (character === "adam") {
             $(".character .adam").show();
             $('#seat')
+            .append($('<div class="person girl">'))
+            .append($('<div class="person girl">'))
             .append($('<div class="person girl">'))
             .append($('<div class="person girl">'))
             .append($('<div class="person girl">'));
@@ -114,27 +115,27 @@ $(document).ready(function() {
 
                     // change clock
                     if (time === 25) {
-                        hourTime = "10:30 PM";
+                        timeString = "10:30 PM";
                     } else if (time === 50) {
-                        hourTime = "11:00 PM";
+                        timeString = "11:00 PM";
                     } else if (time === 75) {
-                        hourTime = "11:30 PM";
+                        timeString = "11:30 PM";
                     } else if (time === 100) {
-                        hourTime = "12:00 AM";
+                        timeString = "12:00 AM";
                     } else if (time === 125) {
-                        hourTime = "12:30 AM";
+                        timeString = "12:30 AM";
                     } else if (time === 150) {
-                        hourTime = "1:00 AM";
+                        timeString = "1:00 AM";
                     } else if (time === 175) {
-                        hourTime = "1:30 AM";
+                        timeString = "1:30 AM";
                     } else if (time === 200) {
-                        hourTime = "2:00 AM";
+                        timeString = "2:00 AM";
                         $("#time").css("color", "red");
                     }
                     
                     // update time display
                     $("#time")
-                        .text(hourTime)
+                        .text(timeString)
                         .addClass("pulse")
                         .delay(1000)
                         .queue(function(){
@@ -143,7 +144,6 @@ $(document).ready(function() {
                 }
             };
             
-
 
             // set speech text
 
@@ -181,6 +181,8 @@ $(document).ready(function() {
             //update money purchasing power
             if (money < 500) {
                 $('.buy-bottle').prop("disabled",true);
+            } else if (money >= 500) {
+                $('.buy-bottle').prop("disabled",false);
             }
             
             let pointsString = "";
@@ -232,6 +234,20 @@ $(document).ready(function() {
                 });
             }
 
+            // if enough people for bottle, give bottle with fancy hands
+            if (!bottle && $("#seat").children(".girl").length > 10 && time > 5) {
+                $("#hands")
+                    .fadeIn()
+                    .delay(3000);
+
+                    bottle = true;
+                    $(".bottle").fadeIn(1500)
+                    .queue(function(){
+                            alcohol+=200;
+                            $("#hands").fadeOut(1500);
+                    });
+            }
+
             // girls flock to bottle
             if (Math.random() < .2 && bottle && $("#seat").children().length <= 10) {
                 
@@ -249,13 +265,13 @@ $(document).ready(function() {
                     $("#seat").append(bottleRat);
                 });
             }
-
-            //r if there's a bottle
+            
+            // things to do if there's a bottle
             if (bottle && alcohol > 0 && $("#seat").children().length) {
                 // reduce alcohol
                 alcohol = alcohol - $("#seat").children().length;
 
-                // make random guests drunk
+                // every second or so, make random table guests drink
                 if (alcohol % 4 === 0) {
                     let random = Math.ceil(Math.random()*$("#seat").children().length);
                     console.log(random);
@@ -265,7 +281,7 @@ $(document).ready(function() {
                 // lower champagne bottle into ice bucket
                 $("#champagne").css("transform", "rotate(-10deg) translateY(" + (100 - parseInt(alcohol / 2)) + "px)");
 
-            // if bottle runs out
+            // if bottle runs out, remove it
             } else if (bottle && alcohol < 1) {
                 bottle = false;
                 alcohol = 0;

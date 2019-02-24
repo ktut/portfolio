@@ -143,7 +143,7 @@ a {
 }
 
 .char-select > div {
-    max-width: 36vw;
+    flex-basis: 36%;
     padding-left: 10px;
     padding-right: 10px;
     cursor: pointer;
@@ -165,6 +165,7 @@ a {
 #info.active {
     height: auto;
     opacity: 1;
+    padding: 15px;
 }
 
 #club {
@@ -197,7 +198,6 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px;
     background: black;
 }
 
@@ -336,6 +336,7 @@ a {
 }
 
 .bottle {
+    position: relative !important;
     display: none;
     z-index: 500 !important;
     bottom: 10%;
@@ -343,6 +344,18 @@ a {
     width: 100px;
     height: 160px;
     overflow-y: hidden;
+}
+
+#hands {
+    display: none;
+    position: absolute;
+    background-size: cover;
+    background-image: url(./assets/hands.gif);
+    width: 227px;
+    height: 150px;
+    top: 24%;
+    left: -25%;
+    z-index: 1000 !important;
 }
 
 #champagne {
@@ -459,7 +472,7 @@ a {
     animation: pointsshift 0.6s ease-in infinite;
 }
 .pulse {
-    animation: pulse 1.4s ease-in;
+    animation: pulse 1s ease-in;
 }
 /* Animation steps */
 @keyframes wobble {
