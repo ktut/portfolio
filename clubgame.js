@@ -234,18 +234,18 @@ $(document).ready(function() {
                 });
             }
 
+
+            let freeBottle = false;
             // if enough people for bottle, give bottle with fancy hands
-            if (!bottle && $("#seat").children(".girl").length > 10 && time > 5) {
+            if (Math.random() < .40 && !freeBottle && !bottle && alcohol < 20 && $("#seat").children(".girl").length > 5 && time > 5) {
                 $("#hands")
-                    .fadeIn()
-                    .delay(3000);
+                    .fadeIn(1500)
+                    .fadeOut(1500);
 
                     bottle = true;
-                    $(".bottle").fadeIn(1500)
-                    .queue(function(){
-                            alcohol+=200;
-                            $("#hands").fadeOut(1500);
-                    });
+                    freeBottle = true;
+                    alcohol+=200;
+                    $(".bottle").fadeIn(1000)
             }
 
             // girls flock to bottle
