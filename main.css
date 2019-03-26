@@ -96,9 +96,17 @@ a:hover {
     color: red;
 }
 
-section {
+section,
+ul {
     margin: 0 auto;
     max-width: 600px;
+}
+
+ul {
+    padding-right: 15px;
+}
+
+section {
     padding: 15px;
 }
 
