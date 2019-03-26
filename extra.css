@@ -33,7 +33,7 @@
         ul.resp {
             transition: all 0.4s;
             max-width: 1200px;
-            padding: 0;
+            padding: 0 15px;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
