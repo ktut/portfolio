@@ -20,7 +20,8 @@ h1 {
 }
 
 h1:first-of-type {
-    margin-top: 10px;
+    font-size: calc(1.3rem + 1.3vw);
+    margin-bottom: calc(1rem + 1vw);
 }
 
 h2 {
@@ -111,7 +112,8 @@ section {
 }
 
 section:first-of-type {
-    padding-top: 25px;
+    padding-top: 20px;
+    padding-top: calc(10px + 5vw);
 }
 
 
