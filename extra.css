@@ -21,10 +21,6 @@
             margin-bottom: 10px;
             border: 1px solid #ccc;
         }
-
-        .video {
-            display: none;
-        }
         
         a.web-img:hover {
             border: 1px solid red;
